@@ -27,7 +27,7 @@ function Dashboard() {
 
   useEffect(()=>{
     loadData()
-  },[])
+  })
   return  <>
   <AdminNav/>
   <div>
