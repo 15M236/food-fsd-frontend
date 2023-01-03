@@ -39,8 +39,7 @@ function Food() {
   })
 
   return <>
-  <TopBar value={{cart:context.cart}}/>
-  <div>
+  
   <div className='list-food-wrapper'>
         <h2>All your Added Foods are here!</h2>
         {
@@ -60,7 +59,6 @@ function Food() {
             </div>
           })
         }
-    </div>
   </div>
   </>
 }
