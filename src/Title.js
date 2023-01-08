@@ -8,6 +8,7 @@ import {CartContext} from './App';
 
 function Title() {
     const context = useContext(CartContext)
+    const role = sessionStorage.getItem('role');
   const handleLogOut = () => {
     sessionStorage.clear();
     navigate('/')
@@ -23,7 +24,7 @@ function Title() {
                     <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
                     <Nav.Link onClick={() => navigate('/signin')}>SignUp</Nav.Link>
                     <Nav.Link onClick={() => navigate('/cart')}>Cart {context.cart.length}</Nav.Link>
-                    <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>
+                    {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link> }
                   </Nav>
               </Container>
             </Navbar>

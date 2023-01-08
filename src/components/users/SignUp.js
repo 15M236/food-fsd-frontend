@@ -25,6 +25,9 @@ export default function SignUp() {
          console.log("user creation successfully")
          navigate('/login')
         }
+        else if (res.data.statusCode === 400) {
+          console.log(res.data.message)
+        }
       }
 
     return (
