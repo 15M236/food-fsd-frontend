@@ -21,7 +21,7 @@ function Title() {
               <Container>
                 <Navbar.Brand href="/">Food App</Navbar.Brand>
                   <Nav className="me-auto">
-                    <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
+                    {!role && <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>}
                     <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>
                     <Nav.Link onClick={() => navigate('/user-cart')}>Cart {context.cart.length}</Nav.Link>
                     {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link> }
