@@ -3,7 +3,6 @@ import axios from 'axios'
 import env from '../../enviroinment'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import TopBar from './TopBar'
 import {useNavigate} from 'react-router-dom'
 import {CartContext} from '../../App';
 
@@ -54,7 +53,7 @@ function Cart() {
     setTotal(sum)
   },[context.cart])
   return<>
-  <TopBar value={{cart:context.cart}}/>
+  {/* <TopBar value={{cart:context.cart}}/> */}
   <div className='add-food-wrapper col-4'>
   <Form>
     <Form.Group className="mb-3" >

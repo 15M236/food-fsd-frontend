@@ -23,7 +23,7 @@ function Title() {
                   <Nav className="me-auto">
                     <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
                     <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>
-                    <Nav.Link onClick={() => navigate('/cart')}>Cart {context.cart.length}</Nav.Link>
+                    <Nav.Link onClick={() => navigate('/user-cart')}>Cart {context.cart.length}</Nav.Link>
                     {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link> }
                   </Nav>
               </Container>
