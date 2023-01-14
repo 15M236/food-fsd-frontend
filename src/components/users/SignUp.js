@@ -22,7 +22,7 @@ export default function SignUp() {
         })
         if(res.data.statusCode===200)
         {
-         console.log("user creation successfully")
+          sessionStorage.setItem('isSignedIn',false)
          navigate('/login')
         }
         else if (res.data.statusCode === 400) {

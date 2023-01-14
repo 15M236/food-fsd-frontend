@@ -25,6 +25,7 @@ function Login() {
        sessionStorage.setItem('token',res.data.token)
        sessionStorage.setItem('role',res.data.role)
        sessionStorage.setItem('userId',res.data.userId)
+       sessionStorage.setItem('isSignedIn',false)
        if(res.data.role==="admin")
           navigate('/dashboard')
        else

@@ -2,7 +2,6 @@ import React,{useState,useEffect}from 'react'
 import AdminNav from './AdminNav'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import Table from 'react-bootstrap/Table';
 import axios from 'axios'
 import env from '../../enviroinment'
 import {useNavigate} from 'react-router-dom'
