@@ -1,5 +1,4 @@
-import React,{useEffect, useState} from 'react'
-import AdminNav from './AdminNav'
+import React,{useEffect, useState, useCallback} from 'react'
 import {useParams,useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import env from '../../enviroinment'
@@ -15,7 +14,7 @@ function OrderItem() {
   let navigate = useNavigate()
   let params = useParams()
   let img = "https://via.placeholder.com/150"
-  let loadData = async()=>{
+  let loadData = useCallback ( async()=>{
     let token = sessionStorage.getItem('token')
     let res = await axios.get(`${env.apiurl}/orders/${params.id}`,
     {
@@ -29,7 +28,7 @@ function OrderItem() {
       setDeliveryAddress(res.data.order.deliveryAddress)
       setStatus(res.data.order.status)
     }
-  }
+  },[params.id])
 
   let changeStatus = async()=>{
     let token = sessionStorage.getItem('token')
@@ -50,13 +49,12 @@ function OrderItem() {
     {
       navigate('/dashboard')
     }
-  })
+  },[navigate , loadData , params.id])
   return <>
-  <AdminNav/>
   <div> 
   <div>
   <div className='list-food-wrapper'>
-        <h2>All your Added Foods are here!</h2>
+        <h2>All Orders are here!</h2>
        <div>
        <h3>&#8377; {orderAmount}</h3> 
     <h4>{deliveryAddress}</h4>

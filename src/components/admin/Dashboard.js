@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import AdminNav from './AdminNav'
+import React, { useEffect, useState, useCallback } from 'react'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table';
 import env from '../../enviroinment'
@@ -10,7 +9,7 @@ function Dashboard() {
   let [data,setData] = useState([])
   let navigate = useNavigate()
 
-  let loadData = async()=>{
+  let loadData = useCallback (async()=>{
     let token = sessionStorage.getItem('token')
     let res = await axios.get(`${env.apiurl}/orders`,
     {
@@ -23,13 +22,13 @@ function Dashboard() {
     else{
       navigate('/login')
     }
-  }
+  },[navigate])
 
   useEffect(()=>{
     loadData()
-  })
+  },[loadData])
   return  <>
-  <AdminNav/>
+  {/* <AdminNav/> */}
   <div>
   <Table striped bordered hover>
       <thead>

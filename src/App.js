@@ -28,7 +28,7 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/signup' element={<Signup/>}/>
               <Route path='/order-success' element={<Success/>}/>
-              <Route path='*' element={<Navigate to='/login'/>}/>
+              <Route path='*' element={<Navigate to='/signup'/>}/>
             </Routes>
         </BrowserRouter>
       </CartContext.Provider>

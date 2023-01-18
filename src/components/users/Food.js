@@ -1,4 +1,4 @@
-import React, { useEffect,useState,useContext } from 'react'
+import React, { useEffect,useState,useContext , useCallback } from 'react'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 import env from '../../enviroinment'
@@ -11,7 +11,7 @@ function Food() {
   let context = useContext(CartContext);
   let [data,setData] = useState([])
   let img = "https://via.placeholder.com/150"
-  let loadData = async()=>{
+  let loadData = useCallback (async()=>{
     let token = sessionStorage.getItem('token')
     let res = await axios.get(`${env.apiurl}/all-food`,
     {
@@ -25,7 +25,7 @@ function Food() {
     {
       navigate('/login')
     }
-  }
+  },[navigate])
 
   let handelAddProduct = async(e)=>{
     let newArray = [...context.cart]
@@ -34,7 +34,7 @@ function Food() {
   }
   useEffect(()=>{
     loadData()
-  })
+  },[loadData ])
 
   return <>
   

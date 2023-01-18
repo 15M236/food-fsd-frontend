@@ -1,5 +1,4 @@
-import React,{useState,useEffect}from 'react'
-import AdminNav from './AdminNav'
+import React,{useState,useEffect , useCallback}from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios'
@@ -30,7 +29,7 @@ let handleDelete = async (id)=>{
   }
 }
 
-let loadData = async()=>{
+let loadData = useCallback (async()=>{
   let token = sessionStorage.getItem('token')
   let res = await axios.get(`${env.apiurl}/all-food`,
   {
@@ -40,7 +39,7 @@ let loadData = async()=>{
   {
     setData(res.data.food)
   }
-}
+},[])
 
 let handleSubmit = async ()=>{
   let token = sessionStorage.getItem('token')
@@ -72,9 +71,8 @@ let handleSubmit = async ()=>{
 
 useEffect(()=>{
   loadData()
-},[])
+},[loadData])
 return  <>
-<AdminNav/>
 <div> 
     <div className='add-food-wrapper col-4'>
       <h3 >Add your Food here!</h3>

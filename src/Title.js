@@ -18,7 +18,7 @@ function Title() {
   let navigate = useNavigate();  
     return(
         <div>
-            <Navbar bg="light" variant="light">
+            <Navbar bg="primary" variant="dark">
               <Container>
                 <Navbar.Brand href="/">Food App</Navbar.Brand>
                   <Nav className="me-auto">
@@ -26,6 +26,9 @@ function Title() {
                     {!isSignedIn && <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>}
                     <Nav.Link onClick={() => navigate('/user-cart')}>Cart {context.cart.length}</Nav.Link>
                     {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link> }
+                    {role==="admin" ? 
+                    <><Nav.Link onClick={()=>navigate('/dashboard')}>Dashboard</Nav.Link>
+                    <Nav.Link onClick={()=>navigate('/food-management')}>Food Management</Nav.Link></> : null }
                   </Nav>
               </Container>
             </Navbar>

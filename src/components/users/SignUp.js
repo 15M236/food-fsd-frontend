@@ -22,7 +22,7 @@ export default function SignUp() {
         })
         if(res.data.statusCode===200)
         {
-          sessionStorage.setItem('isSignedIn',false)
+          sessionStorage.setItem('isSignedIn',true)
          navigate('/login')
         }
         else if (res.data.statusCode === 400) {
