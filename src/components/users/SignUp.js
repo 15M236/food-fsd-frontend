@@ -32,7 +32,9 @@ export default function SignUp() {
 
     return (
         <div>
+          
           <div className='login-main-wrapper'>
+          <p > SIGN UP</p>
           <Form>
           <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>

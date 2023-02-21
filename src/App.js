@@ -8,12 +8,32 @@ import Food from './components/users/Food'
 import Login from './components/users/Login'
 import Signup from './components/users/SignUp'
 import Success from './components/users/Success'
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import Title from './Title';
 export const CartContext = React.createContext();
 
 function App() {
   let [cart,setCart] = useState([])
+
+  useEffect(() => {
+    loadScript("https://checkout.razorpay.com/v1/checkout.js");
+  })
+
+  
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
   return(
     <div>
     <CartContext.Provider value={{cart,setCart}}>

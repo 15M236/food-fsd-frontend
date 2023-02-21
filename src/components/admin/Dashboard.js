@@ -28,7 +28,6 @@ function Dashboard() {
     loadData()
   },[loadData])
   return  <>
-  {/* <AdminNav/> */}
   <div>
   <Table striped bordered hover>
       <thead>

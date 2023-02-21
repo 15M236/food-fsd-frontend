@@ -10,10 +10,12 @@ function Cart() {
   let context = useContext(CartContext);
   let img = "https://via.placeholder.com/150"
   let [total,setTotal]=useState(0)
+  const [user , setUser] = useState("")
   let [deliveryAddress,setDeliveryAddress] = useState("")
   let [contact,setContact] = useState("")
   let userId = sessionStorage.getItem('userId');
-
+  let email = sessionStorage.getItem('email');
+  
   let navigate = useNavigate();
 
   let removeFromCart =async(i)=>{
@@ -22,8 +24,35 @@ function Cart() {
     context.setCart(newArray)
   }
 
-  let handleOrder = async ()=>{
+  let handleOrder = async()=>{
+
+    try {
+      let res = await axios.get(`${env.apiurl}/users/get-data/${email}`)
+      setUser(res.data.user.firstName)
+    }catch(error){
+      console.log(error)
+    }
+
+    const options = {
+      key : 'rzp_test_6tmOybuvCVes5R',
+      currency : 'INR',
+      amount : total * 100 ,
+      name : "Food App",
+      handler : function (response) {
+        console.log("PAYMENT ID :",response.razorpay_payment_id);
+        laststep()
+      },
+      prefill : {
+        name : `${user}` ,
+        email : email 
+      }
+    }
+    const paymentObject = new window.Razorpay(options)
+    paymentObject.open()
+  }
+  const laststep = async() => {
     let token = sessionStorage.getItem('token')
+   
     let res = await axios.post(`${env.apiurl}/order`,
     {
       orderItems:context.cart,
@@ -41,10 +70,10 @@ function Cart() {
       context.setCart([])
       navigate('/user-menu')
     }
-
   }
 
   useEffect(()=>{
+    
     let sum = 0
     for(var i in context.cart)
     {
@@ -52,8 +81,8 @@ function Cart() {
     }
     setTotal(sum)
   },[context.cart])
+  
   return<>
-  {/* <TopBar value={{cart:context.cart}}/> */}
   <div className='add-food-wrapper col-4'>
   <Form>
     <Form.Group className="mb-3" >
@@ -65,9 +94,7 @@ function Cart() {
     </Form.Group>
 
 
-    <Button variant="primary" onClick={()=>handleOrder()}>
-      Submit
-    </Button>
+    <Button variant="primary" onClick={()=>handleOrder()}>Payout</Button>
     </Form>
     </div>
   <div className='list-food-wrapper'>

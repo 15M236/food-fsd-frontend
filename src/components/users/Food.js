@@ -42,7 +42,7 @@ function Food() {
         <h2>All your Added Foods are here!</h2>
         {
           data.map((e,i)=>{
-            return <div className='card-wrapper ' key={i}>
+            return <div className='card-wrapper' key={i}>
               <div className='card-image'>
                 <img src={e.imageUrl?e.imageUrl:img} alt="" width={"150px"} height={"150px"}></img>
               </div>

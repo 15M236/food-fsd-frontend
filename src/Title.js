@@ -12,6 +12,7 @@ function Title() {
     const isSignedIn = sessionStorage.getItem('isSignedIn');
   const handleLogOut = () => {
     sessionStorage.clear();
+    context.cart = ''
     navigate('/')
   }
 
