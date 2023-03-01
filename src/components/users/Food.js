@@ -51,7 +51,7 @@ function Food() {
                 <h4>&#8377; {e.price}</h4>
                 <div>{e.description}</div>
                 <div>
-                  <Button onClick={()=>handelAddProduct(e)} variant='primary'>Add to Cart</Button>
+                  <Button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" onClick={()=>handelAddProduct(e)} variant='primary'>Add to Cart</Button>
                 </div>
               </div>
             </div>

@@ -94,7 +94,7 @@ function Cart() {
     </Form.Group>
 
 
-    <Button variant="primary" onClick={()=>handleOrder()}>Payout</Button>
+    <Button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" variant="primary" onClick={()=>handleOrder()}>Payout</Button>
     </Form>
     </div>
   <div className='list-food-wrapper'>

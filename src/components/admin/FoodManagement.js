@@ -93,7 +93,7 @@ return  <>
       <Form.Control type="text" value={imageUrl} placeholder="Image Url" onChange={(e)=>{setImageUrl(e.target.value)}}/>
     </Form.Group>
 
-    <Button variant="primary" onClick={()=>handleSubmit()}>
+    <Button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" variant="primary" onClick={()=>handleSubmit()}>
       Submit
     </Button>
   </Form>
