@@ -19,7 +19,7 @@ function Title() {
   let navigate = useNavigate();  
     return(
         <div>
-            <Navbar bg="primary" variant="dark">
+            <Navbar bg="primary" variant="dark" className="title-card">
               <Container>
                 <Navbar.Brand href="/">Food App</Navbar.Brand>
                   <Nav className="me-auto">
