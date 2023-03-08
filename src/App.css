@@ -59,3 +59,8 @@
     border-bottom-right-radius: .3rem;
     }
     }
+
+.logo-image {
+    width: 300px;
+    align-items: center;
+}
