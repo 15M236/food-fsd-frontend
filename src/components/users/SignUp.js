@@ -89,7 +89,7 @@ export default function SignUp() {
                   <Form.Control type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                   </div>
                   <div className="form-outline mb-4">          
-                  <Form.Control type="text" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                  <Form.Control type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                   </div>
 
                   <div className="text-center pt-1 mb-5 pb-1">
