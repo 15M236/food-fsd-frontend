@@ -34,7 +34,7 @@ function Food() {
   }
   useEffect(()=>{
     loadData()
-  },[loadData ])
+  },[loadData])
 
   return <>
   

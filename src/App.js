@@ -6,8 +6,8 @@ import OrderItem from './components/admin/OrderItem'
 import Cart from './components/users/Cart'
 import Food from './components/users/Food'
 import Login from './components/users/Login'
+import Orders from './components/users/Orders'
 import Signup from './components/users/SignUp'
-import Success from './components/users/Success'
 import React, { useState , useEffect } from 'react';
 import Title from './Title';
 export const CartContext = React.createContext();
@@ -47,7 +47,7 @@ function App() {
               <Route path='/user-menu' element={<Food/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/signup' element={<Signup/>}/>
-              <Route path='/order-success' element={<Success/>}/>
+              <Route path='/get-orders/:email' element={<Orders/>}/>
               <Route path='*' element={<Navigate to='/signup'/>}/>
             </Routes>
         </BrowserRouter>

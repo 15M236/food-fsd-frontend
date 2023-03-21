@@ -25,6 +25,8 @@ function Title() {
                   <Nav className="me-auto">
                     {!role && <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>}
                     {!isSignedIn && <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>}
+                    {role && <Nav.Link onClick={() => navigate('/user-menu')}>Food List</Nav.Link> }
+                    {role && <Nav.Link onClick={() => navigate('/get-orders/:email')}>Orders</Nav.Link> }
                     <Nav.Link onClick={() => navigate('/user-cart')}>Cart {context.cart.length}</Nav.Link>
                     {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link> }
                     {role==="admin" ? 
