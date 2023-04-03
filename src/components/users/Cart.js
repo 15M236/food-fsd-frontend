@@ -59,7 +59,8 @@ function Cart() {
       userId,
       deliveryAddress,
       orderAmount:total,
-      contact
+      contact,
+      orderedBy:email
     },
     {
       headers:{"Authorization":`Bearer ${token}`}
@@ -68,6 +69,7 @@ function Cart() {
     if(res.data.statusCode===200)
     {
       context.setCart([])
+      context.cart.length = 0 
       navigate('/user-menu')
     }
   }
@@ -84,7 +86,7 @@ function Cart() {
   
   return<>
   <div className='add-food-wrapper col-4'>
-  <Form>
+  <Form className='checkout-page'>
     <Form.Group className="mb-3" >
       <Form.Control type="text"  placeholder="Delivery Address" onChange={(e)=>setDeliveryAddress(e.target.value)}/>
     </Form.Group>
@@ -100,7 +102,7 @@ function Cart() {
   <div className='list-food-wrapper'>
         <h2>Total Order Value: {total}</h2>
         {
-          context.cart.map((e,i)=>{
+         context.cart.length > 0 && context.cart.map((e,i)=>{
             return <div className='card-wrapper ' key={i}>
               <div className='card-image'>
                 <img src={e.imageUrl?e.imageUrl:img} alt="" width={"150px"} height={"150px"}></img>

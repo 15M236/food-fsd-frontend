@@ -11,23 +11,22 @@ export default function Orders() {
     let token = sessionStorage.getItem("token")
 
     const listOrders = useCallback (async()=>{
-        let res =await axios.get(`${env.apiurl}/get-orders/${email}`,{
+      let res = await axios.get(`${env.apiurl}/get-orders/${email}`,{
             headers:{"Authorization":`Bearer ${token}`}
         })
         if(res.data.statusCode === 200 ){
             setOrders(res.data.orders) 
             setCount(res.data.orders.length)
         }
-         
     },[email,token])
-
+    
     useEffect(() => {
         listOrders();
     },[listOrders])
   return (
     <div>
       <h4>Your {count} orders details available here</h4>
-      <Table striped bordered hover>
+      <Table striped bordered hover >
           <thead>
             <tr>
               <th>Bill ID</th>

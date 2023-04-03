@@ -20,8 +20,8 @@ export default function DisplayItems(props) {
             contact - {props.value.contact}<br/>
             Address - {props.value.deliveryAddress}
         </Modal.Body>
-        <Modal.Body>
-            {props.value.orderItems.map((orderItem) => {
+        <Modal.Body >
+            {props.value.orderItems.map((orderItem,i) => {
             return (
                 <>
                 <p>Item - {orderItem.name}</p>

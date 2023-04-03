@@ -21,7 +21,7 @@ function Title() {
         <div>
             <Navbar bg="primary" variant="dark" className="title-card">
               <Container>
-                <Navbar.Brand href="/">Food App</Navbar.Brand>
+              {!isSignedIn ? <Navbar.Brand href="/">Food App</Navbar.Brand> : <Navbar.Brand>Food App</Navbar.Brand>}
                   <Nav className="me-auto">
                     {!role && <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>}
                     {!isSignedIn && <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>}
